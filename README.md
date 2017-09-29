@@ -1,5 +1,5 @@
 # grails-mailwatcher
-This Plugin reads unread mails from provided mail account Id
+To Grails 3 updated Version of https://github.com/IntelliGrape/Grails-Mail-Watcher-Plugin
 
 
 ### Usage Information
