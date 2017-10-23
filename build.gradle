@@ -10,7 +10,7 @@ buildscript {
 }
 
 version "0.1"
-group "mailwatcher"
+group "org.grails.plugins"
 
 apply plugin:"eclipse"
 apply plugin:"idea"
@@ -58,17 +58,33 @@ bootRun {
 bootRepackage.enabled = false
 grailsPublish {
     // TODO: Provide values here
-    user = 'user'
-    key = 'key'
-    githubSlug = 'foo/bar'
+    user = 'junehasissues'
+    key = 'c0ca8891f9f73858ff9340ce5f7b4636ec627284'
+    websiteUrl = 'https://github.com/JuNeHasIssues/grails-mailwatcher'
     license {
         name = 'Apache-2.0'
     }
-    title = "My Plugin"
-    desc = "Full plugin description"
-    developers = [johndoe:"John Doe"]
+    issueTrackerUrl = "https://github.com/JuNeHasIssues/grails-mailwatcher/issues"
+    vcsUrl = "https://github.com/JuNeHasIssues/grails-mailwatcher"
+    title = "grails-mailwatcher"
+    desc = "This Plugin reads unread mails from provided mail account Id. To Grails 3 updated Version of https://github.com/IntelliGrape/Grails-Mail-Watcher-Plugin."
+    developers = [jnester1:"Judith Nester"]
     portalUser = ""
     portalPassword = ""    
+}
+
+bintray {
+  pkg {
+    /*user = System.getenv("BINTRAY_USER") ?: project.hasProperty("bintrayUser") ? project.bintrayUser : ''
+    key = System.getenv("BINTRAY_KEY") ?: project.hasProperty("bintrayKey") ? project.bintrayKey : ''*/
+    name = "grails-mailwatcher"
+    issueTrackerUrl = "https://github.com/JuNeHasIssues/grails-mailwatcher/issues"
+    vcsUrl = "https://github.com/JuNeHasIssues/grails-mailwatcher"
+    version {
+      attributes = ['grails-plugin': "org.grails.plugins:grails-mailwatcher"]
+      name = project.version
+    }
+  }
 }
 
 

@@ -29,6 +29,14 @@ class EmailReaderService {
         return mailWatcherConfig.readTimeOut ?: 60000l //
     }
 
+    private def getExcludeSender(){
+        def result = []
+        (mailWatcherConfig.excludeSender ?: '').tokenize(',')?.each{
+            result << "[${it.toLowerCase()}]".toString()
+        }
+        result
+    }
+
     /**
      * Reads Incoming Emails and Creates Db entries For Them
      * */
@@ -38,7 +46,10 @@ class EmailReaderService {
         try {
             folder = openMailFolder()
             setPermissionToReadAndWrite(folder)
-            List<Message> messages = getUnreadMails(folder)
+            def excludeSender = getExcludeSender()
+            List<Message> messages = getUnreadMails(folder).findAll{
+                !(it.from.toString() in excludeSender)
+            }
             saveMessages(messages)
         } catch (Exception e) {
             println "${e.message}"
