@@ -4,7 +4,7 @@ To Grails 3 updated Version of https://github.com/IntelliGrape/Grails-Mail-Watch
 
 ### Usage Information
 
-Configure: The plugin needs the following properties**
+Configure: The plugin needs the following **properties**
 
 ```
 grails {
@@ -33,7 +33,7 @@ grails {
   
   * **excludeSender** (optional) Mails from this sender/these senders won't be saved
 
-To log the mails that are read, change the logging level to info**
+To log the mails that are read, change the logging level to **info**
 
 ***
 **RoadMap**
