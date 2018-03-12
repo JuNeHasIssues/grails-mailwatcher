@@ -9,6 +9,7 @@ class Email {
     List<String> bccRecipients
     String subject
     String body
+    Date sentDate
     Date dateCreated
     Date lastUpdated
     Boolean isRead = false
@@ -36,5 +37,6 @@ class Email {
         this.recipients = message.getRecipients(Message.RecipientType.TO)?.toList()*.toString()
         this.ccRecipients = message.getRecipients(Message.RecipientType.CC)?.toList()*.toString()
         this.bccRecipients = message.getRecipients(Message.RecipientType.BCC)?.toList()*.toString()
+        this.sentDate = message.sentDate
     }
 }
