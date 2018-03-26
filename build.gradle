@@ -57,6 +57,19 @@ bootRun {
 // enable if you wish to package this plugin as a standalone application
 bootRepackage.enabled = false
 
+bintray {
+    pkg {
+        /*user = System.getenv("BINTRAY_USER") ?: project.hasProperty("bintrayUser") ? project.bintrayUser : ''
+        key = System.getenv("BINTRAY_KEY") ?: project.hasProperty("bintrayKey") ? project.bintrayKey : ''*/
+        name = "grails-mailwatcher"
+        issueTrackerUrl = "https://github.com/JuNeHasIssues/grails-mailwatcher/issues"
+        vcsUrl = "https://github.com/JuNeHasIssues/grails-mailwatcher"
+        version {
+            attributes = ['grails-plugin': "org.grails.plugins:grails-mailwatcher"]
+            name = project.version
+        }
+    }
+}
 
 assets {
     packagePlugin = true
