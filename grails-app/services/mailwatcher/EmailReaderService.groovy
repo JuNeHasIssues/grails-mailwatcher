@@ -29,12 +29,22 @@ class EmailReaderService {
         return mailWatcherConfig.readTimeOut ?: 60000l //
     }
 
+    /**
+     * returns list of excluded Senders set in Config
+     * */
     private def getExcludeSender(){
         def result = []
         (mailWatcherConfig.excludeSender ?: '').tokenize(',')?.each{
             result << "[${it.toLowerCase()}]".toString()
         }
         result
+    }
+
+    /**
+     * reads regex pattern to filter subjects from Config
+     * */
+    private def getFilterSubject(){
+        mailWatcherConfig.filterSubject
     }
 
     /**
@@ -47,8 +57,9 @@ class EmailReaderService {
             folder = openMailFolder()
             setPermissionToReadAndWrite(folder)
             def excludeSender = getExcludeSender()
+            def filterSubject = getFilterSubject()
             List<Message> messages = getUnreadMails(folder).findAll{
-                !(it.from.toString() in excludeSender)
+                !(it.from.toString() in excludeSender) && it.subject==~filterSubject
             }
             saveMessages(messages)
         } catch (Exception e) {
