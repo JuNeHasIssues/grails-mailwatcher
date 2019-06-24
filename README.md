@@ -17,6 +17,7 @@ grails {
         host = "imap.gmail.com"
         port = "993"
         excludeSender = "test@test.com,test1@test1.com"
+        filterSubject = "/\test-pattern.*$/"
     }
 }
 ```
@@ -32,13 +33,13 @@ grails {
   * **port** Port to which app connects
   
   * **excludeSender** (optional) Mails from this sender/these senders won't be saved
+  
+  * **filterSubject** (optional) Only mails whose subject matches this regex pattern are saved
 
 To log the mails that are read, change the logging level to **info**
 
 ***
 **RoadMap**
-
-* Searching for mails can be based on patterns
 
 * Folder to look for in Mail can be given as regex
 
